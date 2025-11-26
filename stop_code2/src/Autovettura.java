@@ -1,12 +1,12 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
 public class Autovettura extends Veicolo {
-    private short numeroPosti;
-    private short numeroPorte;
+    private byte numeroPosti;
+    private byte numeroPorte;
 
     public Autovettura(){}
 
-    public Autovettura(String marca, String modello, String numeroTarga, short tariffaGiornalieraEuro, short numeroPosti, short numeroPorte){
+    public Autovettura(String marca, String modello, String numeroTarga, float tariffaGiornalieraEuro, byte numeroPosti, byte numeroPorte){
         super(marca, modello, numeroTarga, tariffaGiornalieraEuro);
         this.numeroPosti = numeroPosti;
         this.numeroPorte = numeroPorte;
@@ -23,36 +23,35 @@ public class Autovettura extends Veicolo {
     }
 
 
-    public void setNumeroPosti(short numeroPosti) {
+    public void setNumeroPosti(byte numeroPosti) {
         this.numeroPosti = numeroPosti;
     }
 
-    public void setNumeroPorte(short numeroPorte) {
+    public void setNumeroPorte(byte numeroPorte) {
         this.numeroPorte = numeroPorte;
     }
 
     public Autovettura registraAutovettura(){
+        Scanner input = new Scanner(System.in);
         while (true){
             try{
-                Scanner input = new Scanner(System.in);
                 leggiDati(input);
                 System.out.println("Scrivi il numero di posti dell'auto: ");
-                this.numeroPosti = input.nextShort();
+                this.numeroPosti = input.nextByte();
                 System.out.println("Scrivi il numero di porte dell'auto:");
-                this.numeroPorte = input.nextShort();
+                this.numeroPorte = input.nextByte();
                 break;
             }catch(InputMismatchException ie){
                 ie.printStackTrace();
                 System.out.println("Inserire un valore appropriato");
             }
         }
-
-
+        input.close();
 
         Autovettura a = new Autovettura(getMarca(), getModello(), getNumeroTarga(), getTariffaGionralieraEuro(), this.numeroPosti, this.numeroPorte);
 
         return a;
-    }
+    }//end registraAutovettura
 
     @Override
     public String toString(){

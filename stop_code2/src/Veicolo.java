@@ -5,9 +5,9 @@ public  abstract class Veicolo {
     private String marca;
     private String modello;
     private String numeroTarga;
-    private short tariffaGiornalieraEuro;
+    private float tariffaGiornalieraEuro;
 
-    public Veicolo(String marca, String modello, String numeroTarga, short tariffaGiornalieraEuro){
+    public Veicolo(String marca, String modello, String numeroTarga, float tariffaGiornalieraEuro){
         this.marca = marca;
         this.modello = modello;
         this.numeroTarga = numeroTarga;
@@ -40,7 +40,7 @@ public  abstract class Veicolo {
     public String getNumeroTarga(){
         return this.numeroTarga;
     }
-    public short getTariffaGionralieraEuro(){
+    public float getTariffaGionralieraEuro(){
         return this.tariffaGiornalieraEuro;
     }
     //end metodi get

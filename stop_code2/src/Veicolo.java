@@ -1,17 +1,20 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Veicolo {
+public  abstract class Veicolo {
     private String marca;
     private String modello;
     private String numeroTarga;
-    private short tariffaGionralieraEuro;
+    private short tariffaGiornalieraEuro;
 
-    public Veicolo(String marca, String modello, String numeroTarga, short tariffaGionralieraEuro){
+    public Veicolo(String marca, String modello, String numeroTarga, short tariffaGiornalieraEuro){
         this.marca = marca;
         this.modello = modello;
         this.numeroTarga = numeroTarga;
-        this.tariffaGionralieraEuro = tariffaGionralieraEuro;
+        this.tariffaGiornalieraEuro = tariffaGiornalieraEuro;
     }
+    public Veicolo(){}//end costruttore
+
 
     public void setMarca(String marca){
         this.marca = marca;
@@ -23,8 +26,11 @@ public class Veicolo {
         this.numeroTarga = numeroTarga;
     }
     public void setTariffaGionralieraEuro(short tariffaGionralieraEuro){
-        this.tariffaGionralieraEuro = tariffaGionralieraEuro;
+        this.tariffaGiornalieraEuro = tariffaGionralieraEuro;
     }
+    //end metodi set
+
+
     public String getMarca(){
         return this.marca;
     }
@@ -35,23 +41,20 @@ public class Veicolo {
         return this.numeroTarga;
     }
     public short getTariffaGionralieraEuro(){
-        return this.tariffaGionralieraEuro;
+        return this.tariffaGiornalieraEuro;
     }
+    //end metodi get
 
 
-    public Veicolo registraVeicolo(){
-        Scanner input = new Scanner(System.in);
+
+    public void leggiDati(Scanner input) throws InputMismatchException {
         System.out.println("Scrivi la marca del veicolo: ");
-        String marca = input.nextLine();
+        this.marca = input.nextLine();
         System.out.println("Scrivi il modello del veicolo: ");
-        String modello = input.nextLine();
+        this.modello = input.nextLine();
         System.out.println("Scrivi il numero di targa del veicolo");
-        String numeroTarga = input.nextLine();
+        this.numeroTarga = input.nextLine();
         System.out.println("Scrivi la tariffa orario per il noleggio del veicolo: ");
-        short tariffaGiornalieraEuro = input.nextShort();
-
-        Veicolo veicolo = new Veicolo(marca, modello, numeroTarga, tariffaGiornalieraEuro);
-
-        return veicolo;
+        this.tariffaGiornalieraEuro = input.nextShort();
     }
 }
